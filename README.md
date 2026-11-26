@@ -1,6 +1,7 @@
 # Tasks Flow
 
-![Angular](https://shields.io)
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+
 
 This project uses Angular 22.3.0.
 
