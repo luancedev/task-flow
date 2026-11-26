@@ -1,0 +1,61 @@
+<section class="mt-8">
+  <ul class="mt-6 space-y-2">
+    @for (task of tasksService.filteredTasks(); track task.id) {
+      <li
+        class="flex items-center justify-between p-4 bg-white border shadow-sm border-neutral-300 rounded-2xl"
+      >
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input
+            type="checkbox"
+            [checked]="task.completed"
+            (change)="tasksService.toggleTask(task.id)"
+            class="w-5 h-5 accent-green-800 cursor-pointer"
+          />
+          <span
+            class="text-neutral-800 transition-all"
+            [class]="task.completed ? 'line-through text-neutral-400' : 'text-neutral-800'"
+            >{{ task.name }}</span
+          >
+        </label>
+
+        <button
+          type="button"
+          (click)="tasksService.deleteTask(task.id)"
+          class="font-medium hover:text-red-800 cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+            viewBox="0 0 24 24"
+          >
+            <path fill="none" stroke="none" d="M0 0h24v24H0z" />
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </li>
+    } @empty {
+      <div class="py-10 text-center border border-dashed border-neutral-300 rounded-2xl">
+        <p class="text-sm text-neutral-400">
+          @switch (tasksService.filter()) {
+            @case ('pending') {
+              ¡Genial! No tienes tareas pendientes.
+            }
+            @case ('completed') {
+              Aún no has completado ninguna tarea.
+            }
+            @default {
+              No tienes tareas todavia. ¡Agrega una arriba!
+            }
+          }
+        </p>
+      </div>
+    }
+  </ul>
+</section>

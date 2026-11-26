@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Aprender HttpClient en Angular",
+      "completed": true
+    },
+    {
+      "id": "2",
+      "name": "Dominar Signals y Servicios",
+      "completed": false
+    },
+    {
+      "name": "ccxxcbx",
+      "completed": false,
+      "id": "U0ThnV1CjMA"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

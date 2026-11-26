@@ -1,0 +1,33 @@
+<form [formGroup]="taskForm" (ngSubmit)="addTasks()">
+  <div
+    class="flex justify-between py-2 pl-5 pr-2 bg-white border shadow-md rounded-4xl"
+    [class]="taskControl.invalid && taskControl.dirty ? 'border-red-500' : 'border-neutral-300'"
+  >
+    <input
+      [formControl]="taskControl"
+      class="w-full focus:outline-0"
+      placeholder="¿Qué necesitas hacer hoy?"
+      type="text"
+    />
+
+    <button
+      [disabled]="taskControl.invalid"
+      class="px-8 py-3 text-white bg-blue-800 rounded-3xl transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+      type="submit"
+    >
+      Agregar
+    </button>
+  </div>
+
+  @if (taskControl.invalid && taskControl.dirty) {
+    <div class="mt-2 pl-5 text-xs text-red-600">
+      @if (taskControl.hasError('onlySpaces')) {
+        <span>La tarea no puede contener solo espacios.</span>
+      } @else if (taskControl.hasError('minlength')) {
+        <span>Escribe al menos 3 caracteres.</span>
+      } @else if (taskControl.hasError('maxlength')) {
+        <span>Máximo 60 caracteres permitidos.</span>
+      }
+    </div>
+  }
+</form>
